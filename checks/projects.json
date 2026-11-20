@@ -1,0 +1,9 @@
+[
+  {
+    "project": "BuscaMinas/build.xml",
+    "source": "checks/MinesCheck.java",
+    "main": "MinesCheck",
+    "headless": true,
+    "classpath": []
+  }
+]

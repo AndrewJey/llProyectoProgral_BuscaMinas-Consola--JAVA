@@ -31,7 +31,9 @@ public class Menu extends Object{
         boolean comenzar = true; 
         while(comenzar==true){ //Ciclo que mantiene el juego activo
             try{ //Me trata cualquier error que se presente durante la ejecucion del juego, en este bloque de codigo 
-             this.opc = Integer.parseInt(JOptionPane.showInputDialog("Elija una de las opciones\n1.Jugar \n2.Salir"));
+             String entrada = JOptionPane.showInputDialog("Elija una de las opciones\n1.Jugar \n2.Salir");
+             if (entrada == null) return;
+             this.opc = Integer.parseInt(entrada.trim());
              switch(opc){//Contenido de el menu jugar y salir
                  case 1:{//Caso 1 para darle inicio al juego
                   //Variables del caso 1
@@ -80,6 +82,7 @@ public class Menu extends Object{
                  }break;
                  //caso 2 para salir del juego
                  case 2:{                    
+                 comenzar = false;
                  JOptionPane.showMessageDialog(null,"Has salido del juego");
                  }break;
                  case 10010:{

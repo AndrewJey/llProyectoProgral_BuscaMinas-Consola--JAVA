@@ -10,7 +10,7 @@ Puedes abrir este repositorio en VS Code, Antigravity o Sublime Text. El compila
 En NetBeans 25, abre la carpeta que contiene `build.xml` como proyecto Ant. Selecciona un JDK igual o posterior al nivel de fuente del proyecto; las compilaciones de esta revisión usan JDK 24.0.2. El asistente busca NetBeans y el JDK y mantiene la configuración de usuario en `.local-build/`.
 
 ```powershell
-.uild-local.ps1
+..\build-local.ps1
 .\build-local.ps1 -Project 'BuscaMinas/build.xml' -Target run
 ```
 
@@ -22,9 +22,17 @@ Inventario y compilaciones locales del 2026-11-15. Una compilación correcta no 
 
 | Componente | Tipo / destino | Validación |
 | --- | --- | --- |
-| [BuscaMinas/build.xml](<BuscaMinas/build.xml>) | netbeans-ant / 1.8 | Compila; prueba funcional pendiente |
+| [BuscaMinas/build.xml](<BuscaMinas/build.xml>) | netbeans-ant / 1.8 | Compila y pasa verificación funcional (`checks/`) |
 
 ## Archivos ignorados
 
 `.gitignore` excluye credenciales locales, estado del editor y salidas de las herramientas detectadas. No deja de versionar archivos que ya estaban en Git. Los manifiestos, archivos de bloqueo, recursos fuente y scripts de esquema forman parte del código.
 <!-- local-development:end -->
+
+<!-- improvements-20261119:start -->
+## Mejoras y verificación funcional (2026-11-19)
+
+- **Mejoras aplicadas:** Reescrita la generación de minas y conteo de adyacencias en `TableroMinas` (eliminando bucles/casos de borde rotos y validando tamaño) y mejoras de entrada en `Menu`.
+- **Pruebas ejecutadas:** MinesCheck (14800 aserciones: 100 tableros en tamaños 4, 5, 8, 16 y 22 verificando conteo exacto de minas y adyacencias).
+- **Definición de comprobaciones:** [`checks/projects.json`](checks/projects.json) (ejecutable tras compilar con `.\build-local.ps1`).
+<!-- improvements-20261119:end -->
